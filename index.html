@@ -10,64 +10,70 @@
 </head>
 
 <body>
-    <h1>📝 Notes App Pro</h1>
+    <div class="container">
 
-    <button id="openModalBtn">+ New Note</button>
-    <hr>
+        <header>
+            <h1>📝 Notes App Pro</h1>
+            <button type="button" id="openModalBtn">+ New Note</button>
+            <button type="button">About</button>
+            <button type="button">How to</button>
+        </header>
 
-    <input type="text" id="searchInput" placeholder="Search notes..."
-        style="width: 100%; padding: 10px; margin-bottom: 20px;" />
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Search notes...">
+        </div>
 
-    <div id="notesContainer"></div>
+        <div id="notesContainer"></div>
 
+        <div id="noteModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>➕ New Note</h2>
 
-    <div id="noteModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>➕ New Note</h2>
+                <input type="text" id="noteTitle" placeholder="Note Title" style="width: 100%; padding: 8px;" /><br><br>
+                <textarea id="noteContent" placeholder="Your note content..."></textarea>
+                <div id="charCount">0/500</div>
 
-            <input type="text" id="noteTitle" placeholder="Note Title" style="width: 100%; padding: 8px;" /><br><br>
-            <textarea id="noteContent" placeholder="Your note content..."></textarea>
-            <div id="charCount">0/500</div>
+                <label for="noteTags">Tags:</label>
+                <input type="text" id="noteTags" placeholder="work, personal, ideas"
+                    style="width: 100%; padding: 8px;" /><br><br>
 
-            <label for="noteTags">Tags:</label>
-            <input type="text" id="noteTags" placeholder="work, personal, ideas"
-                style="width: 100%; padding: 8px;" /><br><br>
+                <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                    <div>
+                        <label for="noteColor">Color: </label>
+                        <select id="noteColor">
+                            <option value="#ffffff">White</option>
+                            <option value="#fef3c7">Yellow</option>
+                            <option value="#d1fae5">Green</option>
+                            <option value="#e0f2fe">Blue</option>
+                            <option value="#fde68a">Orange</option>
+                            <option value="#fca5a5">Red</option>
+                        </select>
+                    </div>
 
-            <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-                <div>
-                    <label for="noteColor">Color: </label>
-                    <select id="noteColor">
-                        <option value="#ffffff">White</option>
-                        <option value="#fef3c7">Yellow</option>
-                        <option value="#d1fae5">Green</option>
-                        <option value="#e0f2fe">Blue</option>
-                        <option value="#fde68a">Orange</option>
-                        <option value="#fca5a5">Red</option>
-                    </select>
+                    <div>
+                        <label for="noteReminder">Reminder: </label>
+                        <input type="datetime-local" id="noteReminder" />
+                    </div>
                 </div>
 
-                <div>
-                    <label for="noteReminder">Reminder: </label>
-                    <input type="datetime-local" id="noteReminder" />
+                <div class="button-group">
+                    <button id="addNoteBtn" style="background: #2196F3;">Save Note</button>
+                    <button type="button" onclick="modal.style.display='none'"
+                        style="background: #f44336;">Cancel</button>
                 </div>
-            </div>
-
-            <div class="button-group">
-                <button id="addNoteBtn" style="background: #2196F3;">Save Note</button>
-                <button type="button" onclick="modal.style.display='none'" style="background: #f44336;">Cancel</button>
             </div>
         </div>
-    </div>
 
-    <!-- Reminder Modal -->
-    <div id="reminderModal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <span class="close-reminder" style="cursor:pointer; float:right;">&times;</span>
-            <h3>Reset Reminder</h3>
-            <p id="reminderNoteTitle"></p>
-            <input type="datetime-local" id="newReminderTime" />
-            <button id="saveReminderBtn">💾 Save Reminder</button>
+        <!-- Reminder Modal -->
+        <div id="reminderModal" class="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close-reminder" style="cursor:pointer; float:right;">&times;</span>
+                <h3>Reset Reminder</h3>
+                <p id="reminderNoteTitle"></p>
+                <input type="datetime-local" id="newReminderTime" />
+                <button id="saveReminderBtn">💾 Save Reminder</button>
+            </div>
         </div>
     </div>
 
