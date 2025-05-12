@@ -85,6 +85,8 @@ Secure login to protect notes (JWT or OAuth-based)
 
 - Insights into note-taking habits (e.g., most used tags, busiest days)
 
+8. Add dummy notes for initial display
+
 ## 🙌 Contribution
 Contributions are welcome! Please fork the repository, make your changes, and submit a pull request.
 

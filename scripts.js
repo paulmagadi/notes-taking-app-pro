@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         noteModal.style.display = 'none';
     }
 
+
     // Render Notes
     function renderAllNotes() {
         const searchTerm = searchInput.value.toLowerCase();
@@ -98,7 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
         filtered.sort((a, b) => (b.pinned - a.pinned) || (b.id - a.id));
         notesContainer.innerHTML = '';
         filtered.forEach(renderNote);
+
+        toggleSearchVisibility(); 
     }
+
+
 
     function renderNote(note) {
         const noteElement = document.createElement('div');
@@ -204,6 +209,16 @@ document.addEventListener('DOMContentLoaded', () => {
         buttons.forEach(btn => group.appendChild(btn));
         return group;
     }
+
+    function toggleSearchVisibility() {
+        const search = document.getElementById('search');
+        if (notesContainer.hasChildNodes()) {
+            search.style.display = 'block';
+        } else {
+            search.style.display = 'none';
+        }
+    }
+
 
     function toggleContent(contentElement, btn) {
         const isHidden = contentElement.style.display === 'none';
