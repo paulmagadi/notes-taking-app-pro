@@ -87,6 +87,8 @@ Secure login to protect notes (JWT or OAuth-based)
 
 8. Add dummy notes for initial display
 
+9. Add ms word like capabilities for adding and edditing notes
+
 ## 🙌 Contribution
 Contributions are welcome! Please fork the repository, make your changes, and submit a pull request.
 
