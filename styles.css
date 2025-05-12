@@ -27,6 +27,7 @@ header {
     margin-top: 1em;
     border-radius: 8px;
     background-color: #20797f;
+    border: 1.5px solid #20797f;
 
 }
 
@@ -60,7 +61,7 @@ header button:hover {
 
 .input-group {
     position: relative;
-    margin-top: 1.8em;
+    margin-top: 1.5em;
     width: 100%;
 }
 
@@ -98,6 +99,32 @@ input:focus {
     border: 1.5px solid #20797f;
 }
 
+.empty-msg {
+    text-align: center;
+    color: gray;
+    font-style: italic;
+    margin-top: 1em;
+}
+
+#clearSearchBtn {
+    text-align: center;
+    background: #20797f;
+    color: white;
+    border: none;
+    padding: 0.8em 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1em;
+    margin-left: 50%;
+    translate: -50% 0;
+    font-weight: 600;
+}
+#clearSearchBtn:hover {
+    background: #1b6469;
+}
+
+
+
 .note-container {
     border: 1.5px dotted black;
     padding: 1em;
@@ -116,9 +143,9 @@ input:focus {
     margin-top: 1em;
     border: 1.5px solid #20797f;
     padding: 1em;
-    border-radius: 5px;
-  font-family: "Akaya Kanadaka", system-ui;
-  line-height: 2rem;
+    border-radius: 8px;
+    font-family: "Akaya Kanadaka", system-ui;
+    line-height: 2rem;
 }
 
 .button-group button {
@@ -222,7 +249,6 @@ input:focus {
     gap: .5em;
     flex-wrap: wrap;
 }
-
 
 /* About Modal content box */
 #aboutModal .modal-content {
@@ -344,7 +370,3 @@ input:focus {
         justify-content: center;
     }
 }
-
-
-
-

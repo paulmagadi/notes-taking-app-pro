@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
     closeReminderModal.addEventListener('click', () =>  reminderModal.style.display = 'none');
     window.addEventListener('click', (e) => e.target === reminderModal && (reminderModal.style.display = 'none'));
 
+    
+    
+
     // Character Counter
     noteContent.addEventListener('input', updateCharCount);
     function updateCharCount() {
@@ -83,26 +86,38 @@ document.addEventListener('DOMContentLoaded', () => {
         noteModal.style.display = 'none';
     }
 
-
     // Render Notes
     function renderAllNotes() {
         const searchTerm = searchInput.value.toLowerCase();
+
         const filtered = notes.filter(note => {
-            const searchTerm = searchInput.value.toLowerCase();
             return (
                 note.title.toLowerCase().includes(searchTerm) ||
                 note.content.toLowerCase().includes(searchTerm) ||
-                (note.tags || []).some(tag => tag.toLowerCase().includes(searchTerm)) 
+                (note.tags || []).some(tag => tag.toLowerCase().includes(searchTerm))
             );
         });
 
         filtered.sort((a, b) => (b.pinned - a.pinned) || (b.id - a.id));
         notesContainer.innerHTML = '';
-        filtered.forEach(renderNote);
 
-        toggleSearchVisibility(); 
+        if (filtered.length === 0) {
+            notesContainer.innerHTML = `
+                <p class="empty-msg">No matching notes found.</p>
+                <button type="button" id="clearSearchBtn">Clear Search</button>
+            `;
+
+            const clearSearchBtn = document.getElementById('clearSearchBtn');
+            clearSearchBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                renderAllNotes();  
+            });
+        } else {
+            filtered.forEach(renderNote);
+        }
+
+        toggleSearchVisibility();  
     }
-
 
 
     function renderNote(note) {
@@ -180,7 +195,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         buttons.push(resetReminderBtn);
 
-
         // Assembly
         noteElement.append(
             titleElement,
@@ -190,9 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             contentElement
         );
 
-
         notesContainer.appendChild(noteElement);
-
     }
 
     // Helper Functions
@@ -219,6 +231,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function debounce(func, delay) {
+        let timeoutId;
+        return function (...args) {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => func.apply(this, args), delay);
+        };
+    }
+
 
     function toggleContent(contentElement, btn) {
         const isHidden = contentElement.style.display === 'none';
@@ -237,11 +257,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function editNote(note, titleElement, contentElement) {
         const titleInput = document.createElement('input');
         titleInput.value = note.title;
+        titleInput.style.padding = '.5em';
+        titleInput.style.marginLeft = '1em';
+        titleInput.style.borderRadius = '8px';
 
         const contentTextarea = document.createElement('textarea');
         contentTextarea.value = note.content;
-        contentTextarea.style.width = '100%';
-        contentTextarea.style.height = '100px';
+        contentTextarea.style.width = '95%';
+        contentTextarea.style.height = '250px';
+        contentTextarea.style.padding = '1em';
+        contentTextarea.style.margin = '1em';
+        contentTextarea.style.borderRadius = '8px';
 
         titleElement.replaceWith(titleInput);
         contentElement.replaceWith(contentTextarea);
@@ -295,7 +321,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initialize
-    searchInput.addEventListener('input', renderAllNotes);
+    const debouncedRender = debounce(renderAllNotes, 300);
+    searchInput.addEventListener('input', debouncedRender);
+
     setInterval(checkReminders, 60000);
     if ('Notification' in window && Notification.permission !== 'denied') {
         Notification.requestPermission();
