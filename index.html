@@ -15,9 +15,10 @@
         <header>
             <h1 class="heading">🕮 Notes App Pro</h1>
             <div class="header-buttons">
-                <button type="button" id="openModalBtn" aria-label="New Note Button">➕ New Note</button>
-                <button type="button">⚙️About</button>
-                <button type="button">❓How to</button>
+                <button type="button" id="openModalBtn" aria-label="New Note Button" title="Add new note">➕ New
+                    Note</button>
+                <button type="button" id="aboutModalBtn" title="About the app">⚙️About</button>
+                <button type="button" id="howToModalBtn" title="How to use the app">❓How to</button>
             </div>
         </header>
 
@@ -27,9 +28,9 @@
 
         <div id="notesContainer"></div>
 
-        <div id="noteModal" class="modal">
+        <div id="noteModal" class="modal fade-in">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span id="closeNoteModal" class="close">&times;</span>
                 <h2>➕New Note</h2>
                 <br>
                 <input type="text" id="noteTitle" placeholder="Note Title" style="width: 100%; padding: 8px;"><br><br>
@@ -38,7 +39,7 @@
 
                 <label for="noteTags">Tags🏷️:</label>
                 <input type="text" id="noteTags" placeholder="work, personal, ideas"
-                    style="width: 100%; padding: 8px;" ><br><br>
+                    style="width: 100%; padding: 8px;"><br><br>
 
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <div>
@@ -68,16 +69,109 @@
         </div>
 
         <!-- Reminder Modal -->
-        <div id="reminderModal" class="modal" style="display:none;">
+        <div id="reminderModal" class="modal fade-in">
             <div class="modal-content">
-                <span class="close-reminder" style="cursor:pointer; float:right;">&times;</span>
+                <span id="closeReminderModal" class="close">&times;</span>
                 <h3>Reset Reminder</h3>
+                <br>
+                <hr>
+                <br>
                 <p id="reminderNoteTitle"></p>
                 <input type="datetime-local" id="newReminderTime" />
                 <button id="saveReminderBtn">💾 Save Reminder</button>
             </div>
         </div>
     </div>
+
+    <!-- About Modal -->
+
+    <div id="aboutModal" class="modal fade-in">
+        <div class="modal-content">
+            <span id="closeAboutModal" class="close">&times;</span>
+            <h2>⚙️ About Notes App Pro</h2>
+            <hr><br>
+
+            <p><strong>Notes App Pro</strong> is a feature-rich, browser-based note-taking application designed to boost
+                your productivity and streamline information management.</p>
+
+            <h3>Key Features:</h3>
+            <ul>
+                <li><strong>Rich Note Creation:</strong> Add titles, content, tags, colors, and reminders.</li>
+                <li><strong>Smart Organization:</strong> Pin, archive, and color-code notes.</li>
+                <li><strong>Advanced Reminders:</strong> Set time-based alerts with desktop notifications and sounds.
+                </li>
+                <li><strong>Instant Search:</strong> Quickly find notes by title, content, or tags.</li>
+                <li><strong>Data Security:</strong> Works offline using local storage—no cloud needed.</li>
+                <li><strong>Customizable Interface:</strong> Responsive design, smooth animations, and hover effects.
+                </li>
+                <li><strong>Productivity Tools:</strong> Character counter, edit history, bulk actions.</li>
+            </ul>
+
+            <h3>Technical Highlights:</h3>
+            <ul>
+                <li>HTML5, CSS3, and Vanilla JavaScript</li>
+                <li>Local Storage Persistence</li>
+                <li>Notification API Integration</li>
+                <li>Cross-Device Compatibility</li>
+                <li>Robust Error Handling & Validation</li>
+            </ul>
+
+            <h3>Use Cases:</h3>
+            <ul>
+                <li>✔ Personal task management</li>
+                <li>✔ Meeting & lecture notes</li>
+                <li>✔ Project planning & idea brainstorming</li>
+                <li>✔ Shopping lists & checklists</li>
+            </ul>
+
+            <h3>Special Features:</h3>
+            <ul>
+                <li>🔔 Customizable reminders with alert types</li>
+                <li>🏷️ Tag system for better organization</li>
+                <li>📌 Priority pinning for critical notes</li>
+                <li>📦 Archive system for completed tasks</li>
+                <li>🎨 Color coding for categories</li>
+            </ul>
+
+            <h3>Requirements:</h3>
+            <ul>
+                <li>🌐 Modern browser (Chrome, Firefox, Edge)</li>
+                <li>🔒 HTTPS or localhost for notifications</li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!-- How to Modal -->
+
+    <div id="howToModal" class="modal fade-in">
+        <div class="modal-content">
+            <span id="closeHowToModal" class="close">&times;</span>
+            <h2>❓ How to Use Notes App Pro</h2>
+            <br>
+            <hr>
+            <br>
+            <ul class="howto-list">
+                <li>📝 <strong>Add Note:</strong> Click “Add Note” to create a new note with title, content, tags,
+                    color, and reminder.</li>
+                <li>🔍 <strong>Search:</strong> Instantly find notes using the search bar by typing titles, content, or
+                    tags.</li>
+                <li>📌 <strong>Pin Notes:</strong> Use the pin icon to mark critical notes and keep them at the top.
+                </li>
+                <li>📦 <strong>Archive:</strong> Move less-used notes to the archive for a clean workspace.</li>
+                <li>🎨 <strong>Color Coding:</strong> Pick a color to group and distinguish your notes visually.</li>
+                <li>🔔 <strong>Reminders:</strong> Add a time-based reminder and get notified via sound and desktop
+                    alerts.</li>
+                <li>🧹 <strong>Bulk Actions:</strong> Select and manage multiple notes at once (archive, delete, or
+                    restore).</li>
+                <li>📜 <strong>Version History:</strong> Review and revert to earlier edits of your notes (if enabled).
+                </li>
+            </ul>
+            <p><strong>💡 Tip:</strong> Your notes are saved locally — no internet required after loading the app once.
+            </p>
+        </div>
+    </div>
+
 
 
 

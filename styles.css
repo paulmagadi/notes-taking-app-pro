@@ -27,7 +27,7 @@ header {
     margin-top: 1em;
     border-radius: 8px;
     background-color: rgb(32, 121, 127);
-    
+
 }
 
 header .heading {
@@ -106,6 +106,7 @@ button:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    overflow-y: scroll;
 }
 
 .modal-content {
@@ -113,10 +114,12 @@ button:hover {
     margin: auto;
     padding: 25px;
     border-radius: 10px;
-    width: 90%;
+    width: 95%;
     max-width: 500px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.3s ease-in-out;
 }
+
 
 .close {
     float: right;
@@ -156,6 +159,134 @@ button:hover {
     gap: .5em;
     flex-wrap: wrap;
 }
+
+
+
+/* About Modal content box */
+#aboutModal .modal-content {
+    background-color: #fff;
+    margin: 1em auto;
+    max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.4s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    animation: scaleUp 0.3s ease-in-out;
+}
+
+/* Close button */
+#aboutModal .close {
+    color: #999;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#aboutModal .close:hover,
+#aboutModal .close:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Headings and spacing */
+#aboutModal h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: #2c3e50;
+}
+
+#aboutModal h3 {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #34495e;
+}
+
+#aboutModal p {
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+/* Lists */
+#aboutModal ul {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+#aboutModal ul li {
+    margin-bottom: 8px;
+    list-style: disc;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+.modal.fade-in {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 80px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+#howToModal .modal-content {
+    width: 95%;
+    max-width: 800px;
+    animation: scaleUp 0.3s ease-in-out;
+}
+
+.howto-list {
+    list-style: none;
+    padding-left: 0;
+    line-height: 1.8;
+}
+
+.howto-list li {
+    margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+
 
 @media (max-width: 768px) {
     header {

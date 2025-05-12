@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const openModalBtn = document.getElementById('openModalBtn');
-    const modal = document.getElementById('noteModal');
-    const closeModal = document.querySelector('.close');
+    const noteModal = document.getElementById('noteModal');
+    const closeNoteModal = document.querySelector('.close');
 
     const noteTitle = document.getElementById('noteTitle');
     const noteContent = document.getElementById('noteContent');
@@ -14,15 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const newReminderTimeInput = document.getElementById('newReminderTime');
     const reminderModal = document.getElementById('reminderModal');
+    const closeReminderModal = document.getElementById('closeReminderModal');
     const reminderNoteTitle = document.getElementById('reminderNoteTitle');
     const saveReminderBtn = document.getElementById('saveReminderBtn');
     let currentNoteForReminder = null;
 
 
     // Event Listeners
-    openModalBtn.addEventListener('click', () => modal.style.display = 'block');
-    closeModal.addEventListener('click', () => modal.style.display = 'none');
-    window.addEventListener('click', (e) => e.target === modal && (modal.style.display = 'none'));
+    openModalBtn.addEventListener('click', () => noteModal.style.display = 'block');
+    closeNoteModal.addEventListener('click', () => noteModal.style.display = 'none');
+    window.addEventListener('click', (e) => e.target === noteModal && (noteModal.style.display = 'none'));
+
+    // Reinder modal
+    closeReminderModal.addEventListener('click', () =>  reminderModal.style.display = 'none');
+    window.addEventListener('click', (e) => e.target === reminderModal && (reminderModal.style.display = 'none'));
 
     // Character Counter
     noteContent.addEventListener('input', updateCharCount);
@@ -75,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('noteTags').value = '';
         document.getElementById('noteReminder').value = '';
         document.getElementById('charCount').textContent = '0/500';
-        modal.style.display = 'none';
+        noteModal.style.display = 'none';
     }
 
     // Render Notes
@@ -106,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const timestampElement = document.createElement('p');
         timestampElement.textContent = `📅 ${note.timestamp}`;
-        timestampElement.style.color = '#666';
+        timestampElement.style.color = '#667';
         timestampElement.style.fontSize = '0.9em';
 
         const contentElement = document.createElement('p');
@@ -125,11 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Buttons
-        const toggleBtn = createButton('📖 Open', () => toggleContent(contentElement, toggleBtn));
-        const deleteBtn = createButton('🗑️ Delete', () => confirmDelete(note));
-        const editBtn = createButton('✏️ Edit', () => editNote(note, titleElement, contentElement));
-        const pinBtn = createButton(note.pinned ? '📌 Unpin' : '📌 Pin', () => togglePin(note));
-        const archiveBtn = createButton('📦 Archive', () => toggleArchive(note));
+        const toggleBtn = createButton('📖Open', () => toggleContent(contentElement, toggleBtn));
+        const deleteBtn = createButton('🗑️Delete', () => confirmDelete(note));
+        const editBtn = createButton('✏️Edit', () => editNote(note, titleElement, contentElement));
+        const pinBtn = createButton(note.pinned ? '📌Unpin' : '📌Pin', () => togglePin(note));
+        const archiveBtn = createButton('📦Archive', () => toggleArchive(note));
 
         // Reminder Badge
         if (note.reminder) {
@@ -140,14 +145,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!note.reminderAlerted && reminderTime <= now) {
                 note.reminderAlerted = true;
-                reminderElement.textContent = '✅ Reminder shown';
+                reminderElement.textContent = '✅Reminder shown';
                 reminderElement.style.backgroundColor = '#28a745';
                 saveNotes();
             } else if (note.reminderAlerted) {
-                reminderElement.textContent = '✅ Reminder shown';
+                reminderElement.textContent = '✅Reminder shown';
                 reminderElement.style.backgroundColor = '#28a745';
             } else {
-                reminderElement.textContent = `⏰ ${reminderTime.toLocaleString()}`;
+                reminderElement.textContent = `⏰${reminderTime.toLocaleString()}`;
                 reminderElement.style.backgroundColor = '#ff9800';
             }
 
@@ -160,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const buttons = [toggleBtn, editBtn, pinBtn, archiveBtn, deleteBtn];
         // let newReminderTimeInput;
-        const resetReminderBtn = createButton('🔁 Reset Reminder', () => {
+        const resetReminderBtn = createButton('🔁Reset Reminder', () => {
             currentNoteForReminder = note;
             newReminderTimeInput.value = "";
             reminderNoteTitle.textContent = `Note: ${note.title}`;
@@ -202,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleContent(contentElement, btn) {
         const isHidden = contentElement.style.display === 'none';
         contentElement.style.display = isHidden ? 'block' : 'none';
-        btn.textContent = isHidden ? '📕 Close' : '📖 Open';
+        btn.textContent = isHidden ? '📕Close' : '📖Open';
     }
 
     function confirmDelete(note) {
@@ -301,4 +306,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     renderAllNotes();
+    
+    const aboutModalBtn = document.getElementById('aboutModalBtn');
+    const aboutModal = document.getElementById('aboutModal');
+    const closeAboutModal = document.getElementById('closeAboutModal');
+
+    // Open modal on button click
+    aboutModalBtn.addEventListener('click', () => {
+        aboutModal.style.display = 'block';
+    });
+
+    // Close modal when clicking the close button
+    closeAboutModal.addEventListener('click', () => {
+        aboutModal.style.display = 'none';
+    });
+
+    // Close modal when clicking outside the modal content
+    window.addEventListener('click', (event) => {
+        if (event.target === aboutModal) {
+            aboutModal.style.display = 'none';
+        }
+    });
+
+    const howToModalBtn = document.getElementById('howToModalBtn');
+    const howToModal = document.getElementById('howToModal');
+    const closeHowToModal = document.getElementById('closeHowToModal');
+
+    howToModalBtn.addEventListener('click', () => {
+        howToModal.style.display = 'block';
+    });
+
+    closeHowToModal.addEventListener('click', () => {
+        howToModal.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === howToModal) {
+            howToModal.style.display = 'none';
+        }
+    });
+
 });
