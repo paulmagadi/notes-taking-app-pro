@@ -60,7 +60,7 @@ header button {
     outline: none;
 }
 
-.note {
+.note-container {
     border: 1.5px dotted black;
     padding: 1em;
     margin-bottom: 1.5em;
@@ -70,8 +70,17 @@ header button {
     border-radius: 8px;
 }
 
-.note:hover {
+.note-container:hover {
     transform: translateY(-2px);
+}
+
+.note {
+    margin-top: 1em;
+    border: 1px solid black;
+    padding: 1em;
+    border-radius: 5px;
+  font-family: "Akaya Kanadaka", system-ui;
+  line-height: 2rem;
 }
 
 .button-group button {
@@ -251,8 +260,15 @@ button:hover {
 }
 
 #howToModal .modal-content {
-    width: 95%;
+    background-color: #fff;
+    margin: 1em auto;
     max-width: 800px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.4s ease;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
     animation: scaleUp 0.3s ease-in-out;
 }
 

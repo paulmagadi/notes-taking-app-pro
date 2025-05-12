@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderNote(note) {
         const noteElement = document.createElement('div');
-        noteElement.className = 'note';
+        noteElement.className = 'note-container';
         noteElement.style.backgroundColor = note.color;
         noteElement.setAttribute('data-id', note.id);
 
@@ -115,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timestampElement.style.fontSize = '0.9em';
 
         const contentElement = document.createElement('p');
+        contentElement.className = 'note'
         contentElement.textContent = note.content;
         contentElement.style.display = 'none';
 
