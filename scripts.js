@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return (
                 note.title.toLowerCase().includes(searchTerm) ||
                 note.content.toLowerCase().includes(searchTerm) ||
-                (note.tags || []).some(tag => tag.toLowerCase().includes(searchTerm)) // Add null check
+                (note.tags || []).some(tag => tag.toLowerCase().includes(searchTerm)) 
             );
         });
 
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Buttons
-        const toggleBtn = createButton('📝 Toggle', () => toggleContent(contentElement, toggleBtn));
+        const toggleBtn = createButton('📖 Open', () => toggleContent(contentElement, toggleBtn));
         const deleteBtn = createButton('🗑️ Delete', () => confirmDelete(note));
         const editBtn = createButton('✏️ Edit', () => editNote(note, titleElement, contentElement));
         const pinBtn = createButton(note.pinned ? '📌 Unpin' : '📌 Pin', () => togglePin(note));
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function toggleContent(contentElement, btn) {
         const isHidden = contentElement.style.display === 'none';
         contentElement.style.display = isHidden ? 'block' : 'none';
-        btn.textContent = isHidden ? '📕 Hide' : '📖 Show';
+        btn.textContent = isHidden ? '📕 Close' : '📖 Open';
     }
 
     function confirmDelete(note) {

@@ -13,14 +13,16 @@
     <div class="container">
 
         <header>
-            <h1>📝 Notes App Pro</h1>
-            <button type="button" id="openModalBtn">➕ New Note</button>
-            <button type="button">About</button>
-            <button type="button">How to</button>
+            <h1 class="heading">🕮 Notes App Pro</h1>
+            <div class="header-buttons">
+                <button type="button" id="openModalBtn" aria-label="New Note Button">➕ New Note</button>
+                <button type="button">⚙️About</button>
+                <button type="button">❓How to</button>
+            </div>
         </header>
 
         <div class="search">
-            <input type="text" id="searchInput" placeholder="Search notes...">
+            <input type="text" id="searchInput" placeholder="🔍Search notes...">
         </div>
 
         <div id="notesContainer"></div>
@@ -30,30 +32,30 @@
                 <span class="close">&times;</span>
                 <h2>➕New Note</h2>
                 <br>
-                <input type="text" id="noteTitle" placeholder="Note Title" style="width: 100%; padding: 8px;" /><br><br>
+                <input type="text" id="noteTitle" placeholder="Note Title" style="width: 100%; padding: 8px;"><br><br>
                 <textarea id="noteContent" placeholder="Your note content..."></textarea>
                 <div id="charCount">0/500</div>
 
-                <label for="noteTags">Tags:</label>
+                <label for="noteTags">Tags🏷️:</label>
                 <input type="text" id="noteTags" placeholder="work, personal, ideas"
-                    style="width: 100%; padding: 8px;" /><br><br>
+                    style="width: 100%; padding: 8px;" ><br><br>
 
                 <div style="display: flex; gap: 15px; flex-wrap: wrap;">
                     <div>
                         <label for="noteColor">Color: </label>
                         <select id="noteColor">
-                            <option value="#ffffff">White</option>
-                            <option value="#fef3c7">Yellow</option>
-                            <option value="#d1fae5">Green</option>
-                            <option value="#e0f2fe">Blue</option>
-                            <option value="#fde68a">Orange</option>
-                            <option value="#fca5a5">Red</option>
+                            <option value="#ffffff">⚪White</option>
+                            <option value="#fef3c7">🟡Yellow</option>
+                            <option value="#d1fae5">🟢Green</option>
+                            <option value="#e0f2fe">🔵Blue</option>
+                            <option value="#fde68a">🟠Orange</option>
+                            <option value="#fca5a5">🔴Red</option>
                         </select>
                     </div>
 
                     <div>
                         <label for="noteReminder">Reminder: </label>
-                        <input type="datetime-local" id="noteReminder" />
+                        <input type="datetime-local" id="noteReminder">
                     </div>
                 </div>
 
